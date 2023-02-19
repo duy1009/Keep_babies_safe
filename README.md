@@ -1,6 +1,6 @@
 # Keep_Babies_Safe
 ### Description
-
+This is a system that uses artificial intelligence to detect and notify your phone when your baby approaches dangerous objects such as knives, scissors, electrical outlets, railings, stairs and dangerous areas. other. What you need to prepare is just a camera, a device running this system and a phone to receive the alarm signal. Parents will rest assured that their children can play at home without having to constantly supervise them, the system will automatically warn and send you a message to remind you as soon as the child approaches a dangerous area.
 ### Requirements
 python >= 3.8
 #### Install libraries
