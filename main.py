@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # init Bird view
     region = np.float32([REGION_P1, REGION_P2, [width, height], [0, height]])
     dst = np.float32([[0, 0], [width, 0], [width, 3*width], [0, 3*width]])
-    BirdV = BirdView(region, dst, size, DISTANCE_OBJECT)
+    BirdV = BirdView(region, dst, size, circle_mode=CIRCLE_MODE)
 
     # load model
     Det = Detect(WEIGHT, IMG_SIZE_YOLO, DEVICE)

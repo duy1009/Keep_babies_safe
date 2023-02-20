@@ -90,14 +90,16 @@ def setup_points(img_bg, window_name, path_save):
     writePointPolygon(path_save, points)
     return points
 
-def draw_polygon (frame, points):
-    for point in points:
-        frame = circle( frame, (point[0], point[1]), 5, (0,0,255), -1)
-    frame = polylines(frame, [np.int32(points)], False, (255,0, 0), thickness=2)
+def draw_polygon (frame, points, color = (255,0, 0), show_point = True, thickness = 2):
+    if show_point:
+        for point in points:
+            frame = circle( frame, (point[0], point[1]), 5, (0,0,255), -1)
+    frame = polylines(frame, [np.int32(points)], False, color, thickness)
     if(len(points) > 2):
-        frame = line(frame, tuple(points[0]), tuple(points[-1]),(255,0, 0), thickness=2)
+        frame = line(frame, tuple(points[0]), tuple(points[-1]),color, thickness)
     return frame
-
+def isPolygonIntersect(points1, points2):
+    return Polygon(points1).intersects(Polygon(points2))
 def distance(point1, point2):
     '''Calculate usual distance.'''
     x1, y1 = point1

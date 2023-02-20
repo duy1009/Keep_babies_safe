@@ -21,7 +21,9 @@ PATH_POINTS_POLYGON = r".\data\points.txt"
 # Bird view
 REGION_P1 = [300, 210]
 REGION_P2 = [520, 210]
-DISTANCE_OBJECT = 250
+DISTANCE_OBJECT = 250   # Circle mode
+POLYGON_OBJECT =[[-120,0],[0,-120],[120,0],[0,120]] # Shape mode
+CIRCLE_MODE = False
 
 # Object colors
 COLOR1_DEFAULT = (255,255,0)
