@@ -30,6 +30,7 @@ For example:
 #### Bird view plane
 The bird view plane is a plane made up of 4 points on the image, two of which are set by default to the lower left corner and the lower right corner. You can correct 2 points on `lines 22-23`
 
+You can also edit any shape instead of circle by setting `CIRCLE_MODE = False` on `line 26` and adjust the shape on `line 25`
 ### How to run
 Run the main.py file with the following command:
 
