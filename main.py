@@ -6,7 +6,7 @@ from ObjectDetection.utils.general import scale_coords
 from config import *
 from helpMethod import *
 from BirdView import BirdView
-
+from Telegram import *
 
 if __name__ == '__main__':
     cap = cv2.VideoCapture(VIDEO_IN) 

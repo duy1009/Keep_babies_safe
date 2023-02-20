@@ -1,11 +1,9 @@
-from cv2 import putText,setMouseCallback,waitKey, polylines, line, imshow, imwrite, circle, resize, FONT_HERSHEY_SIMPLEX, EVENT_LBUTTONDOWN
+from cv2 import putText,setMouseCallback,waitKey, polylines, line, imshow, circle, FONT_HERSHEY_SIMPLEX, EVENT_LBUTTONDOWN
 import numpy as np
 from shapely.geometry.polygon import Polygon
 from shapely.geometry import Point
-import telegram
 from config import *
 import os
-from threading import Thread
 def draw_circle(image, pos, color = (0,0,255)):
     for i in pos:
         circle(image,(int(i[0]),int(i[1])),4, color, 5)
@@ -15,33 +13,12 @@ def isInside(points, centroid):
     centroid = Point(centroid)
     return polygon.contains(centroid)
 
-
-def send_warning(photo_path=IMG_DG_PATH):
-    try:
-        bot = telegram.Bot(token=TOKEN)
-        bot.send_photo(chat_id= CHAT_ID,photo=open(photo_path, "rb"), caption="Baby Dangerous!!") 
-        print("Send Success!")
-    except Exception as ex:
-        print("Can not send warning! ", ex)
-
-def alertDangerous(img):
-    imwrite(IMG_DG_PATH, resize(img, dsize=(920,640), fx=0.2, fy=0.2))
-    thread = Thread(target=send_warning(IMG_DG_PATH))
-    thread.start()
-    return img
-
 def split_object(centerbottom, labels):
-    
-    list_peo = []
-    list_baby = []
-    list_obj = []
-    # classification people and objects into list_peo and list_obj
+    list_peo, list_baby, list_obj  = [], [], []
     for j in range(labels.shape[0]):
         pos = [int(centerbottom[j][0]),int(centerbottom[j][1])]
         if(int(labels[j]) ==4):
             list_peo.append(pos)
-            # if Det.sInside(points,center_peo):
-            #     frame = Det.alert(frame)
         elif(int(labels[j]) ==6):
             list_baby.append(pos)
         else:
